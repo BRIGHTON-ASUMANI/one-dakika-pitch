@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template,redirect,url_for,session
 from . import auth
 from . import auth
 from flask import render_template, request, redirect, url_for, flash
@@ -23,9 +23,6 @@ def login():
     return render_template('auth/login.html', title = title, login_form = login_form)
 
 
-
-
-
 @auth.route('/register', methods = ["GET", "POST"])
 def register():
     form = RegistrationForm()
@@ -33,6 +30,7 @@ def register():
         user = User(email = form.email.data, username = form.username.data, password = form.password.data)
         db.session.add(user)
         db.session.commit()
+        session.permanent = True
 
         return redirect(url_for('.login'))
         flash('Your account was registered successfully. You can now log in.')

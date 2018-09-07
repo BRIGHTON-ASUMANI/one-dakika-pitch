@@ -3,7 +3,7 @@ from config import config_options
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
+from datetime import timedelta
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -16,7 +16,8 @@ def create_app(config_name):
 
     # creating app configurations
     app.config.from_object(config_options[config_name])
-
+    app.config['SECRET_KEY'] = 'emojis'
+    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
     # initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
