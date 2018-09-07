@@ -1,8 +1,11 @@
+import os
 class Config:
     '''
     General configuration parent class
     '''
     pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:newa$um0ney@localhost/pitch'
 
 
 
@@ -23,6 +26,8 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
+
+
 
     DEBUG = True
 
