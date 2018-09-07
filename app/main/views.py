@@ -10,3 +10,9 @@ def index():
     title = 'Welcome to One Minute Pitch'
 
     return render_template('index.html', title = title)
+
+@main.route('/category/<int:id>', methods = ['GET','POST'])
+def category():
+    title = 'Categories'
+
+    return render_template('category.html', title = title)
