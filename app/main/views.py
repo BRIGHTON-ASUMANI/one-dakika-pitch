@@ -1,4 +1,4 @@
-from flask import render_template,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort
 from . import main
 # from ..models import User
 from .. import db
@@ -13,6 +13,15 @@ def index():
 
 @main.route('/category/<int:id>', methods = ['GET','POST'])
 def category():
-    title = 'Categories'
 
+    title = 'Categories'
     return render_template('category.html', title = title)
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)
