@@ -17,9 +17,9 @@ class User(UserMixin,db.Model):
     email=db.Column(db.String(255),unique=True,index=True)
     password_hash=db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    # account = db.relationship("Account", backref="user", lazy = "dynamic")
-    # password = db.relationship("Password", backref="user", lazy = "dynamic")
-
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    
 
     @property
     def password(self):

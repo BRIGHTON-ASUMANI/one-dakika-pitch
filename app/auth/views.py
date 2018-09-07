@@ -1,6 +1,5 @@
 from flask import render_template,redirect,url_for,session
 from . import auth
-from . import auth
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required
 from ..models import User
@@ -18,7 +17,7 @@ def login():
             return redirect(request.args.get('next') or url_for('main.index'))
 
         flash('Invalid username or password')
-
+        session.permanent = True
     title = "Login"
     return render_template('auth/login.html', title = title, login_form = login_form)
 
@@ -30,7 +29,7 @@ def register():
         user = User(email = form.email.data, username = form.username.data, password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        session.permanent = True
+        # session.permanent = True
 
         return redirect(url_for('.login'))
         flash('Your account was registered successfully. You can now log in.')
