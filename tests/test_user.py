@@ -1,5 +1,5 @@
 import unittest
-from app.models import User
+from app.models import User,Category
 
 class UserModelTest(unittest.TestCase):
 
