@@ -4,7 +4,7 @@ from app.models import User,Category
 from flask_migrate import Migrate, MigrateCommand
 
 # create apdevelopment
-app =  create_app('development')
+app =  create_app('test')
 
 
 #initializing migrate command and migrate class
