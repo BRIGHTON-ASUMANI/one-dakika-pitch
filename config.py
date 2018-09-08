@@ -4,6 +4,8 @@ class Config:
     General configuration parent class
     '''
     pass
+
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:newa$um0ney@localhost/pitch'
 
