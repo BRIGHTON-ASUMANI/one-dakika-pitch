@@ -9,7 +9,7 @@ from flask_mail import Mail
 #import Emoji
 
 
-
+simple = SimpleMDE()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -37,6 +37,7 @@ def create_app(config_name):
     login_manager.init_app(app)
     mail.init_app(app)
     #emoji.init_app(app)
+    simple.init_app(app)
 
     # registering the Blueprint
     from .main import main as main_blueprint

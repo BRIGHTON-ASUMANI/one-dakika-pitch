@@ -4,6 +4,9 @@ class Config:
     General configuration parent class
     '''
     pass
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
