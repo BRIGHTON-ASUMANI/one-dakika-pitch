@@ -4,41 +4,19 @@ from ..models import User
 from .. import db,photos
 from flask_login import login_required, current_user
 from .forms import UpdateProfile,CategoryForm
-
-# @main.route('/', methods = ['GET','POST'])
-# def index():
-#     title = 'Welcome to One Minute Pitch'
-#
-#     return render_template('index.html', title = title)
-#
-# @main.route('/category/<int:id>', methods = ['GET','POST'])
-# def category():
-#
-#     title = 'Categories'
-#     return render_template('category.html', title = title)
-
+import markdown2  
 
 @main.route('/', methods = ['GET','POST'])
 def index():
-    categories = Category.query.all()
-    pitches = Pitch.query.all()
-    categories = Category.get_categories()
     title = 'Welcome to One Minute Pitch'
-    form = CategoryForm()
 
+    return render_template('index.html', title = title)
 
-    if form.validate_on_submit():
-        name = form.name.data
-        description = form.description.data
-        # user = current_user._get_current_object()
-        new_category = Category(name=name, description=description)
-        new_category.save_category()
-        return redirect(url_for('.index'))
+@main.route('/category/<int:id>', methods = ['GET','POST'])
+def category():
 
-    # new_pitch = Pitch(content=content,user_id=current_user.id,category_id=category.id)
-    # new_pitch.save_pitch()
-
-    return render_template('index.html', title = title, categories = categories, pitches=pitches, cat_form=form)
+    title = 'Categories'
+    return render_template('category.html', title = title)
 
 @main.route('/user/<uname>')
 def profile(uname):

@@ -21,8 +21,6 @@ def login():
         session.permanent = True
     title = "Login"
     return render_template('auth/login.html', title = title, login_form = login_form)
-
-
 @auth.route('/register', methods = ["GET", "POST"])
 def register():
     form = RegistrationForm()
@@ -31,14 +29,12 @@ def register():
         db.session.add(user)
         db.session.commit()
         # session.permanent = True
-        mail_message("Welcome to Oneminute pitch","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('.login'))
-        flash('Your account was registered successfully. You can now log in.')
+        flash('SUccesfully register please proceed to login')
 
     title = "New Account created"
     return render_template('auth/register.html', title = title, registration_form = form)
-
 
 
 
