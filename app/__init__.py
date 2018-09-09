@@ -7,9 +7,9 @@ from datetime import timedelta
 from flask_uploads import UploadSet,configure_uploads,IMAGES
 from flask_mail import Mail
 #import Emoji
+from flask_simplemde import SimpleMDE
 
 
-simple = SimpleMDE()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -18,6 +18,7 @@ login_manager.login_view = 'auth.login'
 photos = UploadSet('photos',IMAGES)
 mail = Mail()
 #emoji = Emoji()
+simple = SimpleMDE()
 
 def create_app(config_name):
     app = Flask(__name__)

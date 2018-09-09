@@ -4,7 +4,7 @@ from app.models import User,Category
 from flask_migrate import Migrate, MigrateCommand
 
 # create apdevelopment
-app =  create_app('test')
+app =  create_app('development')
 
 
 #initializing migrate command and migrate class
@@ -20,7 +20,7 @@ def test():
 
 @manager.shell
 def make_shell_context():
-    return dict(app = app, db = db, User = User)
+    return dict(app = app, db = db, User = User,Category = Category)
 
 migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
