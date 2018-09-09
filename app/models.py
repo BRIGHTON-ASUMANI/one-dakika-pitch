@@ -45,7 +45,6 @@ class Category(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     categoryname = db.Column(db.Integer)
     information = db.Column(db.String)
-    # posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_category(self):
@@ -57,3 +56,53 @@ class Category(db.Model):
     def get_categories(cls):
         categories = Category.query.all()
         return categories
+
+
+class Pitch(db.Model):
+    all_pitches = []
+    __tablename__ = 'pitches'
+    id = db.Column(db.Integer,primary_key = True)
+    TextAreaField = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    category_id = db.Column(db.Integer,db.ForeignKey("categories.id"))
+    comment = db.relationship("Comment", backref="pitch", lazy = "dynamic")
+
+
+
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def clear_pitches(cls):
+        Pitch.all_pitches.clear()
+
+
+    @classmethod
+    def get_pitches(cls,id):
+        pitches = Pitch.query.filter_by(category_id=id).all()
+        return pitches
+
+
+
+
+class Comment(db.Model):
+
+    __tablename__ = 'comment'
+
+    id = db.Column(db. Integer,primary_key = True)
+    comment = db.Column(db.String(255))
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    pitches_id = db.Column(db.Integer,db.ForeignKey("pitches.id"))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comment(self,id):
+        comment = Comment.query.filter_by(pitches_id=id).all()
+        return comment
