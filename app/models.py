@@ -44,7 +44,7 @@ class Category(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     categoryname = db.Column(db.Integer)
-    information = db.Column(db.String)
+    # information = db.Column(db.String)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_category(self):

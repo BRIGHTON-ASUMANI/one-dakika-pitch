@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User
+from ..models import User,Category
 from .. import db,photos
 from flask_login import login_required, current_user
 from .forms import UpdateProfile,CategoryForm
@@ -10,8 +10,8 @@ import markdown2
 def index():
     form = CategoryForm()
     if form.validate_on_submit():
-        name = form.name.data
-        new_category = Category(name=name)
+        name = form.categoryname.data
+        new_category = Category(categoryname = name)
         new_category.save_category()
         return redirect(url_for('main.index'))
 
