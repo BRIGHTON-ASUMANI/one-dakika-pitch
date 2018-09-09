@@ -4,13 +4,20 @@ from ..models import User
 from .. import db,photos
 from flask_login import login_required, current_user
 from .forms import UpdateProfile,CategoryForm
-import markdown2  
+import markdown2
 
 @main.route('/', methods = ['GET','POST'])
 def index():
+    form = CategoryForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        new_category = Category(name=name)
+        new_category.save_category()
+        return redirect(url_for('main.index'))
+
     title = 'Welcome to One Minute Pitch'
 
-    return render_template('index.html', title = title)
+    return render_template('index.html', title = title, category_form = form)
 
 @main.route('/category/<int:id>', methods = ['GET','POST'])
 def category():
