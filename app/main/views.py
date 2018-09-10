@@ -7,6 +7,17 @@ from .forms import UpdateProfile
 import markdown2
 
 
+@main.route('/')
+def index():
+    """
+    View root page function that returns the index page and its data
+    """
+
+    title = 'one minute pitch'
+
+    return render_template('index.html', title=title)
+
+
 
 
 @main.route('/user/<uname>')
