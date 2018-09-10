@@ -1,0 +1,32 @@
+{% macro displayCategoryList(category_list) %}
+    {% for category in category_list %}
+
+      <div  class="pitch-card text-center container-fluid">
+        <h2>
+          <a href="/category/{{category.id}}"> {{ category.name }} </a></h2>
+        <h4>{{ category.description }}</h4>
+      </div>
+   {% endfor %}
+
+{% endmacro %}
+
+{% macro displayPitches(pitch_list) %}
+{% for pitches in pitch_list %}
+<div >
+  <ul>
+    <li>
+      <h3><a  class="text-grey" href="/pitch/{{pitches.id}}">{{pitches.content|truncate(250)}}</a>
+    <hr>
+  </ul>
+</div>
+{% endfor %}
+{% endmacro %}
+
+{% macro displaySpecificPitch(specific_pitch_list) %}
+{% for comment in specific_pitch_list %}
+<div>
+  <hr> {{comment.comment_section_id}}
+</div>
+{% endfor %}
+
+{% endmacro %}
