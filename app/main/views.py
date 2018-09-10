@@ -1,9 +1,9 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User,Category
+from ..models import User
 from .. import db,photos
 from flask_login import login_required, current_user
-from .forms import UpdateProfile,CategoryForm
+from .forms import UpdateProfile
 import markdown2
 
 @main.route('/', methods = ['GET','POST'])
@@ -11,28 +11,81 @@ def index():
     categories = Category.query.all()
     pitches = Pitch.query.all()
     categories = Category.get_categories()
+    title = 'Welcome to One Minute Pitch'
     form = CategoryForm()
+
+
     if form.validate_on_submit():
         name = form.categoryname.data
-        new_category = Category(categoryname = name)
+        new_category = Category(name=name)
         new_category.save_category()
-        return redirect(url_for('main.index'))
+        return redirect(url_for('.index'))
 
-    title = 'Welcome to One Minute Pitch'
+    return render_template('index.html', title = title, categories = categories, pitches=pitches, cat_form=form)
 
-    return render_template('index.html', title = title, category_form = form)
-
-
-
-@main.route('/category/<int:id>', methods = ['GET','POST'])
+@main.route('/category/<int:id>')
 def category(id):
+
     category = Category.query.get(id)
 
     if category is None:
         abort(404)
 
-    title = 'Categories'
-    return render_template('category.html', title = title, category = category)
+    pitches = Pitches.get_pitches(id)
+    title = "Pitches"
+    return render_template('category.html', title = title, category = category,pitches = pitches)
+
+@main.route('/category/pitch/new/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_pitch(id):
+    form = PitchForm()
+    category = Category.query.filter_by(id=id).first()
+
+    if category is None:
+        abort(404)
+
+    if form.validate_on_submit():
+        content = form.content.data
+        new_pitch = Pitch(content=content,user_id=current_user.id,category_id=category.id)
+        new_pitch.save_pitch()
+        return redirect(url_for('.category', id = category.id))
+
+    title = 'New pitch'
+    return render_template('pitch.html', title = title, pitch_form = form)
+
+
+@main.route('/pitch/<int:id>', methods = ['GET','POST'])
+@login_required
+def single_pitch(id):
+
+    pitches = Pitch.query.get(id)
+
+    if pitches is None:
+        abort(404)
+
+    comment = Comment.get_comment(id)
+    title = 'comment Section'
+    return render_template('comment.html', title = title, pitches = pitches, comment = comment)
+
+
+
+@main.route('/pitch/new/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+    form = CommentForm()
+    pitches = Pitch.query.filter_by(id=id).first()
+
+    if pitches is None:
+        abort(404)
+
+    if form.validate_on_submit():
+        new_comment = Comment(comment_section_id=form.comment.data,user_id=current_user.id,pitches_id=pitches.id)
+        new_comment.save_comment()
+        return redirect(url_for('.single_pitch', id = pitches.id))
+
+    title = 'New Comment'
+    return render_template('comments.html', title = title, comment_form = form)
+
 
 @main.route('/user/<uname>')
 def profile(uname):
