@@ -39,18 +39,17 @@ class User(UserMixin,db.Model):
         return  {self.username}
 
 class Category(db.Model):
-
     __tablename__ = 'categories'
 
-    id = db.Column(db.Integer,primary_key = True)
-    categoryname = db.Column(db.Integer)
-    # information = db.Column(db.String)
-    # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    id = db.Column(db.Integer, primary_key = True)
+    categoryname = db.Column(db.String(255))
 
     def save_category(self):
 
         db.session.add(self)
         db.session.commit()
+
 
     @classmethod
     def get_categories(cls):
@@ -84,7 +83,6 @@ class Pitch(db.Model):
     def get_pitches(cls,id):
         pitches = Pitch.query.filter_by(category_id=id).all()
         return pitches
-
 
 
 

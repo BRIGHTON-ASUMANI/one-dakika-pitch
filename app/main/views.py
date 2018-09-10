@@ -8,6 +8,9 @@ import markdown2
 
 @main.route('/', methods = ['GET','POST'])
 def index():
+    categories = Category.query.all()
+    pitches = Pitch.query.all()
+    categories = Category.get_categories()
     form = CategoryForm()
     if form.validate_on_submit():
         name = form.categoryname.data
@@ -19,11 +22,17 @@ def index():
 
     return render_template('index.html', title = title, category_form = form)
 
+
+
 @main.route('/category/<int:id>', methods = ['GET','POST'])
-def category():
+def category(id):
+    category = Category.query.get(id)
+
+    if category is None:
+        abort(404)
 
     title = 'Categories'
-    return render_template('category.html', title = title)
+    return render_template('category.html', title = title, category = category)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -33,6 +42,7 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user)
+
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required

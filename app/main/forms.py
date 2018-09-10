@@ -7,5 +7,5 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class CategoryForm(FlaskForm):
-    categoryname = StringField('category name')
+    categoryname = StringField('name of category')
     submit = SubmitField('Submit')
