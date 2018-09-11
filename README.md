@@ -19,9 +19,10 @@
 ## ***__INSTALLATION__***
 You can install this application in different ways. They include:
 1. You can clone this repository and download the requirements which i have listed in my requirements.txt file.
- ***For you to clone this application you need to have the following installed in your machine : git, virtual.(virtual is very important. since your application cannot run without a virtual).
-This is how you install virtual you need the following:***
-### ___I used ubuntu:  sudo apt-get install python3.6-venv python3.6 -m venv virtual___
+ *For you to clone this application you need to have the following installed in your machine : git, virtual.(virtual is very important. since your application cannot run without a virtual).
+This is how you install virtual you need the following:*
+
+### __I used ubuntu:  sudo apt-get install python3.6-venv python3.6 -m venv virtual__
 
 > Repo: https://github.com/BRIGHTON-ASUMANI/one-dakika-pitch.git
 > some requirements(check on requirements.txt). you can also check the on the apps functionality in specs.md
