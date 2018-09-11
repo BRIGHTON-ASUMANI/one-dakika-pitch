@@ -3,15 +3,32 @@
 {% block content %}
 <div class="container">
 <div class="row">
-  <div class="col-md-4">
-  {% if user == current_user %}
-      <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
-  {% endif %}
+  <div class="col-md-2">
+
 </div>
+  <div class="col-md-8">
+<!--Display profile photo-->
 
+{% if user.profile_pic_path %}
 
+<img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+
+{%else%}
+<p>No profile picture</p>
+
+{% endif %}
+
+    {% if user == current_user %}
+<form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+
+  <input type="file"  name="photo" class="form-control" required>
+  <input type="submit">
+  {% endif %}
+{% if user == current_user %}
+    <a href="{{url_for('main.update_profile',uname=user.username)}}"><button>Edit profile</button></a>
+{% endif %}
 <!-- displaying  Username-->
-  <div class="col-md-4">
+
     <h3> {{user.username| capitalize}} </h3>
 
     <!--Displaying user bio-->
@@ -20,25 +37,9 @@
     {%else%}
       <p> {{user.username| capitalize}} has no bio </p>
     {% endif %}
+
   </div>
-
-  <!--Display profile photo-->
-  <div class="col-md-4">
-  {% if user.profile_pic_path %}
-
-  <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
-
-  {%else%}
-  <p>No profile picture</p>
-
-  {% endif %}
-
-      {% if user == current_user %}
-  <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
-
-    <input type="file"  name="photo" class="form-control" required>
-    <input type="submit">
-    {% endif %}
+  <div class="col-md-2">
 </div>
 
 

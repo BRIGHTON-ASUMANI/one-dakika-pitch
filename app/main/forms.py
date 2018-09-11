@@ -7,9 +7,9 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class PitchForm(FlaskForm):
-    details = TextAreaField('New Pitch')
+    pitch = TextAreaField('New Pitch')
     submit = SubmitField('Submit')
 
-class CommentForm(FlaskForm):
+class TechcomForm(FlaskForm):
     comments = TextAreaField('New Pitch')
     submit = SubmitField('Submit')

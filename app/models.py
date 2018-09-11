@@ -21,6 +21,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     technology = db.relationship('Technology', backref='user', lazy='dynamic')
+    # techcom = db.relationship('Techcom', backref='user', lazy='dynamic')
 
 
     @property
@@ -41,10 +42,20 @@ class Technology(db.Model):
     __tablename__ = 'technologies'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    comments = db.Column(db.String(1000))
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-    def save_pick(self):
+    def save_technology(self):
         db.session.add(self)
         db.session.commit()
+#
+# class Techcom(db.Model):
+#     __tablename__ = 'techcom'
+#     id = db.Column(db.Integer, primary_key=True)
+#     comment = db.Column(db.String(255))
+#     technology_id = db.Column(db.Integer, db.ForeignKey("technologies.id"))
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#
+#     def save_techcom(self):
+#         db.session.add(self)
+#         db.session.commit()

@@ -17,12 +17,9 @@ def index():
 def technology():
     form = PitchForm()
     title = 'Create a pitch '
-        if technology is None:
-        abort(404)
-
     if form.validate_on_submit():
-        details = form.details.data
-        new_technology = Technology(details=details)
+        pitch = form.pitch.data
+        new_technology = Technology(pitch=pitch, user=current_user)
         new_technology.save_technology()
         return redirect(url_for('.index'))
 
@@ -31,26 +28,8 @@ def technology():
 @main.route('/technology/comment', methods = ['GET','POST'])
 def techpitch():
 
+
     return render_template('technology.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
