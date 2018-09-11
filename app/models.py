@@ -4,10 +4,6 @@ from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
@@ -20,11 +16,12 @@ class User(UserMixin,db.Model):
     pass_secure = db.Column(db.String(255))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    technologies = db.relationship('Technology', backref='user', lazy='dynamic')
-    employment = db.relationship('Employment', backref='user', lazy='dynamic')
-    sports = db.relationship('Sports', backref='user', lazy='dynamic')
-    science = db.relationship('Science', backref='user', lazy='dynamic')
-    religion = db.relationship('Religion', backref='user', lazy='dynamic')
+    technology = db.relationship('Technology', backref='user', lazy='dynamic')
+    techcom = db.relationship('TechCom', backref='user', lazy='dynamic')
+    # employment = db.relationship('Employment', backref='user', lazy='dynamic')
+    # sports = db.relationship('Sports', backref='user', lazy='dynamic')
+    # science = db.relationship('Science', backref='user', lazy='dynamic')
+    # religion = db.relationship('Religion', backref='user', lazy='dynamic')
 
     @property
     def password(self):
@@ -40,62 +37,80 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return  {self.username}
 
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
+
+
 class Technology(db.Model):
-    __tablename__ = 'technologies'
+    __tablename__ = 'technology'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def save_technologies(self):
         db.session.add(self)
-        db.session.commit()
 
-
-class Employment(db.Model):
-    __tablename__ = 'employment'
+class TechCom(db.Model):
+    __tablename__ = 'techcom'
     id = db.Column(db.Integer, primary_key=True)
-    pitch = db.Column(db.String(255))
-
+    techcom = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    technology_id = db.Column(db.Integer, db.ForeignKey("technology.id"))
 
-    def save_employment(self):
-        db.session.add(self)
-        db.session.commit()
-
-class Sports(db.Model):
-    __tablename__ = 'sports'
-    id = db.Column(db.Integer, primary_key=True)
-    pitch = db.Column(db.String(255))
-
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-
-    def save_technology(self):
+    def save_techcom(self):
         db.session.add(self)
         db.session.commit()
 
 
-class Science(db.Model):
-    __tablename__ = 'science'
-    id = db.Column(db.Integer, primary_key=True)
-    pitch = db.Column(db.String(255))
 
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-
-    def save_science(self):
-        db.session.add(self)
-        db.session.commit()
-
-class Religion(db.Model):
-    __tablename__ = 'religion'
-    id = db.Column(db.Integer, primary_key=True)
-    pitch = db.Column(db.String(255))
-
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-
-    def save_religion(self):
-        db.session.add(self)
-        db.session.commit()
+#
+#
+# class Employment(db.Model):
+#     __tablename__ = 'employment'
+#     id = db.Column(db.Integer, primary_key=True)
+#     pitch = db.Column(db.String(255))
+#
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#
+#     def save_employment(self):
+#         db.session.add(self)
+#         db.session.commit()
+#
+# class Sports(db.Model):
+#     __tablename__ = 'sports'
+#     id = db.Column(db.Integer, primary_key=True)
+#     pitch = db.Column(db.String(255))
+#
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#
+#     def save_technology(self):
+#         db.session.add(self)
+#         db.session.commit()
+#
+#
+# class Science(db.Model):
+#     __tablename__ = 'science'
+#     id = db.Column(db.Integer, primary_key=True)
+#     pitch = db.Column(db.String(255))
+#
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#
+#     def save_science(self):
+#         db.session.add(self)
+#         db.session.commit()
+#
+# class Religion(db.Model):
+#     __tablename__ = 'religion'
+#     id = db.Column(db.Integer, primary_key=True)
+#     pitch = db.Column(db.String(255))
+#
+#     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#
+#     def save_religion(self):
+#         db.session.add(self)
+#         db.session.commit()
 
 
 

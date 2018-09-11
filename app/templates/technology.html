@@ -65,7 +65,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 </style>
 </head>
-<body>
+
 
 <div classs='container'>
 <div class="bg-img">
@@ -77,11 +77,36 @@ input[type=text]:focus, input[type=password]:focus {
        <div class="col-md-2"> </div>
       </div>
 
-
-
 </div>
-</body>
-</html>
+
+
+
+<div classs='container'>
+<div class="bg-img">
+  <div class="row">
+  <div class="col-md-2"> </div>
+        <div class="col-md-8">
+            <h1>Technology comments</h1>
+        {{wtf.quick_form(techform)}}
+       <div class="col-md-2"> </div>
+      </div>
+</div>
+
+
+
+<div classs='container'>
+<div class="bg-img">
+  <div class="row">
+  <div class="col-md-2"> </div>
+        <div class="col-md-8">
+        {% for technologies in pitches %}
+        <div>
+        <a href="/technology/{{technology.id}}">{{technology.techcom}}</a>
+
+        </div>
+       <div class="col-md-2"> </div>
+      </div>
+</div>
 
 
 

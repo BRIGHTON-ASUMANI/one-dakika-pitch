@@ -10,18 +10,24 @@ class TPitchForm(FlaskForm):
     pitch = TextAreaField('New Pitch')
     submit = SubmitField('Submit')
 
-class EPitchForm(FlaskForm):
-    pitch = TextAreaField('New Pitch')
+class CommentTPitchForm(FlaskForm):
+    techcom = TextAreaField('New Pitch')
     submit = SubmitField('Submit')
 
-class SCPitchForm(FlaskForm):
-    pitch = TextAreaField('New Pitch')
-    submit = SubmitField('Submit')
 
-class SPitchForm(FlaskForm):
-    pitch = TextAreaField('New Pitch')
-    submit = SubmitField('Submit')
-
-class RPitchForm(FlaskForm):
-    pitch = TextAreaField('New Pitch')
-    submit = SubmitField('Submit')
+#
+# class EPitchForm(FlaskForm):
+#     pitch = TextAreaField('New Pitch')
+#     submit = SubmitField('Submit')
+#
+# class SCPitchForm(FlaskForm):
+#     pitch = TextAreaField('New Pitch')
+#     submit = SubmitField('Submit')
+#
+# class SPitchForm(FlaskForm):
+#     pitch = TextAreaField('New Pitch')
+#     submit = SubmitField('Submit')
+#
+# class RPitchForm(FlaskForm):
+#     pitch = TextAreaField('New Pitch')
+#     submit = SubmitField('Submit')
