@@ -6,10 +6,22 @@ class UpdateProfile(FlaskForm):
     bio = TextAreaField('Tell us about you.',validators = [Required()])
     submit = SubmitField('Submit')
 
-class PitchForm(FlaskForm):
+class TPitchForm(FlaskForm):
     pitch = TextAreaField('New Pitch')
     submit = SubmitField('Submit')
 
-class TechcomForm(FlaskForm):
-    comments = TextAreaField('New Pitch')
+class EPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
+    submit = SubmitField('Submit')
+
+class SCPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
+    submit = SubmitField('Submit')
+
+class SPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
+    submit = SubmitField('Submit')
+
+class RPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
     submit = SubmitField('Submit')

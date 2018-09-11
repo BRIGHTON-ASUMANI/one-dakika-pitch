@@ -44,10 +44,10 @@ class Technology(db.Model):
     __tablename__ = 'technologies'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-    def save_technology(self):
+    def save_technologies(self):
         db.session.add(self)
         db.session.commit()
 
@@ -56,7 +56,7 @@ class Employment(db.Model):
     __tablename__ = 'employment'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def save_employment(self):
@@ -67,7 +67,7 @@ class Sports(db.Model):
     __tablename__ = 'sports'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def save_technology(self):
@@ -79,7 +79,7 @@ class Science(db.Model):
     __tablename__ = 'science'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def save_science(self):
@@ -90,7 +90,7 @@ class Religion(db.Model):
     __tablename__ = 'religion'
     id = db.Column(db.Integer, primary_key=True)
     pitch = db.Column(db.String(255))
-    posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def save_religion(self):

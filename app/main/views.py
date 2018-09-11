@@ -14,18 +14,20 @@ def index():
     return render_template('index.html')
 
 @main.route('/technology', methods = ['GET','POST'])
+@login_required
 def technology():
-    form = PitchForm()
+    form = TPitchForm()
     title = 'Create a pitch '
     if form.validate_on_submit():
         pitch = form.pitch.data
         new_technology = Technology(pitch=pitch, user=current_user)
-        new_technology.save_technology()
+        new_technology.save_technologies()
         return redirect(url_for('.index'))
 
-    return render_template("technology.html", pitch_form = form, title = title)
+    return render_template("technology.html", tpitch_form = form, title = title)
 
 @main.route('/technology/comment', methods = ['GET','POST'])
+@login_required
 def techpitch():
 
 
@@ -40,19 +42,21 @@ def techpitch():
 
 
 @main.route('/religion', methods = ['GET','POST'])
+@login_required
 def religion():
-    form = PitchForm()
+    form = RPitchForm()
     title = 'Create a pitch '
     if form.validate_on_submit():
         pitch = form.pitch.data
-        new_religion = religion(pitch=pitch, user=current_user)
+        new_religion = Religion(pitch=pitch, user=current_user)
         new_religion.save_religion()
         return redirect(url_for('.index'))
 
-    return render_template("religion.html", pitch_form = form, title = title)
+    return render_template("religion.html", rpitch_form = form, title = title)
 
 @main.route('/religion/comment', methods = ['GET','POST'])
-def techpitch():
+@login_required
+def relpitch():
 
 
 
@@ -60,45 +64,22 @@ def techpitch():
     return render_template('religion.html')
 
 
-
-
-# @main.route('/technology', methods = ['GET','POST'])
-# def technology():
-#     form = PitchForm()
-#     title = 'Create a pitch '
-#     if form.validate_on_submit():
-#         pitch = form.pitch.data
-#         new_technology = Technology(pitch=pitch, user=current_user)
-#         new_technology.save_technology()
-#         return redirect(url_for('.index'))
-#
-#     return render_template("technology.html", pitch_form = form, title = title)
-#
-# @main.route('/technology/comment', methods = ['GET','POST'])
-# def techpitch():
-#
-#
-#
-#
-#     return render_template('technology.html')
-#
-#
-
 @main.route('/science', methods = ['GET','POST'])
+@login_required
 def science():
-    form = PitchForm()
+    form = SCPitchForm()
     title = 'Create a pitch '
     if form.validate_on_submit():
         pitch = form.pitch.data
-        new_science = science(pitch=pitch, user=current_user)
+        new_science = Science(pitch=pitch, user=current_user)
         new_science.save_science()
         return redirect(url_for('.index'))
 
-    return render_template("science.html", pitch_form = form, title = title)
+    return render_template("science.html", scpitch_form = form, title = title)
 
 @main.route('/science/comment', methods = ['GET','POST'])
-def techpitch():
-
+@login_required
+def scipitch():
 
 
 
@@ -108,19 +89,21 @@ def techpitch():
 
 
 @main.route('/employment', methods = ['GET','POST'])
+@login_required
 def employment():
-    form = PitchForm()
+    form = EPitchForm()
     title = 'Create a pitch '
     if form.validate_on_submit():
         pitch = form.pitch.data
-        new_employment = employment(pitch=pitch, user=current_user)
+        new_employment = Employment(pitch=pitch, user=current_user)
         new_employment.save_employment()
         return redirect(url_for('.index'))
 
-    return render_template("employment.html", pitch_form = form, title = title)
+    return render_template("employment.html", epitch_form = form, title = title)
 
 @main.route('/employment/comment', methods = ['GET','POST'])
-def techpitch():
+@login_required
+def employpitch():
 
 
 
@@ -128,36 +111,27 @@ def techpitch():
     return render_template('employment.html')
 
 
-
-
-@main.route('/')
-def index():
-
-    return render_template('index.html')
-
 @main.route('/sports', methods = ['GET','POST'])
+@login_required
 def sports():
-    form = PitchForm()
+    form = SPitchForm()
     title = 'Create a pitch '
     if form.validate_on_submit():
         pitch = form.pitch.data
-        new_sports = sports(pitch=pitch, user=current_user)
+        new_sports = Sports(pitch=pitch, user=current_user)
         new_sports.save_sports()
         return redirect(url_for('.index'))
 
-    return render_template("sports.html", pitch_form = form, title = title)
+    return render_template("sports.html", spitch_form = form, title = title)
 
 @main.route('/sports/comment', methods = ['GET','POST'])
-def techpitch():
+@login_required
+def sportspitch():
 
 
 
 
     return render_template('sports.html')
-
-
-
-
 
 
 @main.route('/user/<uname>')
