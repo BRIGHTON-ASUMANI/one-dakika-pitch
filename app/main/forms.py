@@ -7,27 +7,47 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 class TPitchForm(FlaskForm):
-    pitch = TextAreaField('New Pitch')
+    pitch = TextAreaField('New Pitch has been inputed')
     submit = SubmitField('Submit')
 
 class CommentTPitchForm(FlaskForm):
-    techcom = TextAreaField('New Pitch')
+    techcom = TextAreaField('New Pitch has been inputed')
     submit = SubmitField('Submit')
 
 
-#
-# class EPitchForm(FlaskForm):
-#     pitch = TextAreaField('New Pitch')
-#     submit = SubmitField('Submit')
-#
-# class SCPitchForm(FlaskForm):
-#     pitch = TextAreaField('New Pitch')
-#     submit = SubmitField('Submit')
-#
-# class SPitchForm(FlaskForm):
-#     pitch = TextAreaField('New Pitch')
-#     submit = SubmitField('Submit')
-#
-# class RPitchForm(FlaskForm):
-#     pitch = TextAreaField('New Pitch')
-#     submit = SubmitField('Submit')
+class EPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch has been inputed')
+    submit = SubmitField('Submit')
+
+class CommentEPitchForm(FlaskForm):
+    empcom = TextAreaField('New Pitch has been inputed')
+    submit = SubmitField('Submit')
+
+
+class SCPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
+    submit = SubmitField('Submit')
+
+
+class CommentSCPitchForm(FlaskForm):
+    scicom = TextAreaField('New Pitch has been inputed')
+    submit = SubmitField('Submit')
+
+
+class SPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
+    submit = SubmitField('Submit')
+
+
+class CommentSPitchForm(FlaskForm):
+    spocom = TextAreaField('New Pitch has been inputed')
+    submit = SubmitField('Submit')
+
+
+class RPitchForm(FlaskForm):
+    pitch = TextAreaField('New Pitch')
+    submit = SubmitField('Submit')
+
+class CommentRPitchForm(FlaskForm):
+    relcom = TextAreaField('New Pitch has been inputed')
+    submit = SubmitField('Submit')

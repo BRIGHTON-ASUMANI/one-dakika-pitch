@@ -13,22 +13,35 @@
 
     <div class="navbar-collapse collapse">
 
-            <ul class="nav navbar-nav navbar-inverse">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/technology">categories <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/technology">Technology</a></li>
-                    <li><a href="/sports">Sports</a></li>
-                    <li><a href="/employment">Employment</a></li>
-                    <li><a href="/science">Science</a></li>
-                    <li><a href="/religion">Religion</a></li>
-                  </ul>
-                </li>
-              </ul>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/technology">Technology</a></li>
+                    </ul>
+
+                  <ul class="nav navbar-nav">
+                      <li class="active"><a href="/sports">Sports</a></li>
+                      </ul>
+
+                      <ul class="nav navbar-nav">
+                          <li class="active"><a href="/science">Science</a></li>
+                          </ul>
+
+                          <ul class="nav navbar-nav">
+                              <li class="active"><a href="/employment">Employment</a></li>
+                              </ul>
+
+                              <ul class="nav navbar-nav">
+                                  <li class="active"><a href="/religion">Religion</a></li>
+                                  </ul>
+
 
       <ul class="nav navbar-nav navbar-right">
         {% if current_user.is_authenticated %}
              <li><a href="{{url_for('main.profile',uname=current_user.username)}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li><a href="#" class="pull-left"><img src="{{url_for('static',filename='images/minute.gif')}}" style="height:25px;"></a></li>
         <li><a href="{{url_for('auth.logout')}}"><span class="glyphicon glyphicon-log-out"></span> Sign out </a></li>
         {% else %}
         <li><a href="{{url_for('auth.login')}}"><span class="glyphicon glyphicon-log-in"></span> Sign in </a></li>
