@@ -78,9 +78,9 @@ input[type=text]:focus, input[type=password]:focus {
             <h1>Technology</h1>
             {{technology.pitch}}
 
-          {%for techcomments in techcomments %}
+          {% for techcomments in techcomments %}
               <h3>{{techcomments.techcom}}</h3>
-          {%endfor%}
+          {% endfor %}
           <h1> Comment Technology pitch</h1>
           {{ wtf.quick_form(techform) }}
 

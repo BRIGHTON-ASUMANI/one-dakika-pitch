@@ -76,14 +76,13 @@ input[type=text]:focus, input[type=password]:focus {
             <h1>Employment</h1>
             {{employment.pitch}}
 
-
-
-
+<div>
           {%for employcomments in employcomments %}
               <h3>{{employcomments.empcom}}</h3>
           {%endfor%}
           <h1> Comment Employment pitch</h1>
           {{ wtf.quick_form(employform) }}
+</div>
 
           <!-- {%for techcomments in techcom %}
               <h1>{{techcomments.techcom}}</h1>

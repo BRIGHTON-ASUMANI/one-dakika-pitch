@@ -67,16 +67,17 @@ input[type=text]:focus, input[type=password]:focus {
 </head>
 
 
-<div classs='container'>
+
+<div classs='container-fluid'>
 <div class="bg-img">
   <div class="row">
   <div class="col-md-2"> </div>
         <div class="col-md-8">
-            <h1>List of Employment pitches and the users who posted</h1>
-  <a href="/employments" >Write a pitch</a>
+            <h2>List of Employment pitches and the users who posted</h2>
+  <a href="/employment">Write a pitch</a></br>
   {% for employment in pitches %}
-<a href="/employment/{{employment.id}}">{{employment.pitch}}</a>
-<h1>{{employment.user.username}}</h1>
+<h2>{{employment.user.username}}</h2>
+<button><a href="/employment/{{employment.id}}">{{employment.pitch}}</a></button>
   {% endfor %}
       </div>
 
