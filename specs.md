@@ -9,4 +9,5 @@
 3. You should know git and heroku commands git clone, git add, heroku ps etc
 4. You should have a terminal an be able to host the application on your local host
 5. note:
+
 > This application uses the heroku master application structure so that it can be hosted on heroku after deployment:

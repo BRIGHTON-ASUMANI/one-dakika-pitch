@@ -50,9 +50,6 @@ def alltechpitches():
     return render_template("technology/tech.html", title=title, pitches=pitches )
 
 
-
-
-
 @main.route('/employment', methods = ['GET','POST'])
 @login_required
 def employment():
@@ -90,8 +87,6 @@ def allemploypitches():
     return render_template("employment/emp.html", title=title, pitches=pitches )
 
 
-
-
 @main.route('/science', methods = ['GET','POST'])
 @login_required
 def science():
@@ -127,10 +122,6 @@ def allsciencepitches():
     title = 'science pitches'
     pitches = Science.query.order_by(Science.id).all()
     return render_template("science/sciences.html", title=title, pitches=pitches )
-
-
-
-
 
 
 
@@ -173,8 +164,6 @@ def allsportpitches():
 
 
 
-
-
 @main.route('/religion', methods = ['GET','POST'])
 @login_required
 def religion():
@@ -210,16 +199,6 @@ def allreligionpitches():
     title = 'religion pitches'
     pitches = Religion.query.order_by(Religion.id).all()
     return render_template("religion/rel.html", title=title, pitches=pitches )
-
-
-
-
-
-
-
-
-
-
 
 
 
