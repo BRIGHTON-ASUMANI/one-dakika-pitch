@@ -77,6 +77,7 @@ input[type=text]:focus, input[type=password]:focus {
   {% for sports in pitches %}
 <a href="/sports/{{sports.id}}">{{sports.pitch}}</a>
 <h1>{{sports.user.username}}</h1>
+{{simplemde.load}}
   {% endfor %}
       </div>
 

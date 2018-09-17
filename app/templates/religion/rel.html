@@ -77,6 +77,7 @@ input[type=text]:focus, input[type=password]:focus {
   {% for religion in pitches %}
 <a href="/religion/{{religion.id}}">{{religion.pitch}}</a>
 <h1>{{religion.user.username}}</h1>
+{{simplemde.load}}
   {% endfor %}
       </div>
 

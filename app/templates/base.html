@@ -5,12 +5,10 @@
     {% include 'navbar.html' %}
 {% endblock %}
 
-  <!--Importing the simple mde css and js files  -->
+
   {%block styles%}
    {{ super() }}
-  <script src="{{url_for('static',filename='js/jquery.bpopup.min.js')}}"></script>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
+<!--Importing the simple mde css and js files  -->
   {{ simplemde.css}}
   {{ simplemde.js }}
 
