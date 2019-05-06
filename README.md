@@ -54,25 +54,44 @@ __we first import the os to get the necessary methods__
 > **export DATABASE_URL='postgres://komkrhtvhkqhpf:d1f780c5d2f7b58754ef26f4b85a8dbd6934d59cba70f8400ffca2845f5bb1b7@ec2-54-227-247-225.compute-1.amazonaws.com:5432/d6bgqi19ennurv'
 python3.6 manage.py server**
 
-> afterward we do this in the ProdConfig function in the config.py this line of code
-> class ProdConfig(Config):
->   SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-> and this will help you to recieve the localhost in Heroku.
+>  afterward we do this in the ProdConfig function in the config.py this line of code
+
+>  class ProdConfig(Config):
+
+>  SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
+>  and this will help you to recieve the localhost in Heroku.
+
 > we then run this in our terminal after doing the git stuff...
+
 > $ git add .
+
 > $ git commit -m "Deploying to heroku"
+
 > $ git push heroku master
+
 > $ heroku run python3.6 manage.py shell
+
 > this will head us to our shell where we need to create the db so as to run it right?
+
 > db.create_all()
+
 > exit()
+
 > now we have created our database so we will need to export everything to our heroku
+
 > if you had exports such as
+
 > MAIL,PASSWORDS,SECRET_KEY
+
 > $ heroku config:set <the line of export>
-> the line of export may be like SECRET_KEY='MoringaSchool'
+
+> the line of export may be like SECRET_KEY='12345'
+
 > PLease make sure you have no error
+
 > to confirm if your psql is working run
+
 > $ heroku pg:psql
 
 ***for any queries please contact @ asumanibrighton@gmail.com***
