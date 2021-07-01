@@ -10,7 +10,7 @@ class Config:
 
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:newa$um0ney@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:nkjkjkjkjkjkjkj@localhost/pitch'
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
